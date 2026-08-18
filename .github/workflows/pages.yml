@@ -23,6 +23,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Inject shared mode
+        run: python - <<'PY'
+from pathlib import Path
+p=Path('index.html')
+s=p.read_text()
+needle='<script>const BASE='
+if '<script src="shared.js"></script>' not in s:
+    s=s.replace(needle,'<script src="shared.js"></script>'+needle,1)
+p.write_text(s)
+PY
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -32,5 +42,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-# Pages enabled; this commit retriggers the deployment after initial setup.
