@@ -23,12 +23,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Bust shared UI cache
+      - name: Apply shared UI and filter grid overrides
         run: python - <<'PY'
 from pathlib import Path
 p=Path('index.html')
 s=p.read_text()
-s=s.replace('shared.js?v=4','shared.js?v=5')
+s=s.replace('shared.js?v=4','shared.js?v=6').replace('shared.js?v=5','shared.js?v=6')
+css='''<style id="filter-grid-v1">
+.vehicleFilters{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;overflow:visible!important;padding:10px 0 1px!important}
+.vehicleFilter{width:100%!important;min-width:0!important;max-width:none!important;flex:none!important;padding:9px 10px!important;overflow:hidden!important}
+.vehicleFilterTitle{font-size:12px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.vehicleFilterMeta{font-size:10px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+@media(max-width:380px){.vehicleFilters{gap:6px!important}.vehicleFilter{padding:8px 7px!important}.vehicleFilterTitle{font-size:11px!important}.vehicleFilterMeta{font-size:9px!important}}
+</style>'''
+if 'filter-grid-v1' not in s:
+    s=s.replace('</head>',css+'</head>',1)
 p.write_text(s)
 PY
       - name: Setup Pages
