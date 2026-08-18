@@ -23,18 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Inject shared mode and filters
-        run: python - <<'PY'
-from pathlib import Path
-p=Path('index.html')
-s=p.read_text()
-needle='<script>const BASE='
-if 'shared.js?v=3' not in s:
-    s=s.replace(needle,'<script src="shared.js?v=3"></script>'+needle,1)
-if 'filters.js?v=3' not in s:
-    s=s.replace('</body>','<script src="filters.js?v=3"></script></body>',1)
-p.write_text(s)
-PY
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
