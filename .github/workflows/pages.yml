@@ -23,6 +23,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Bust shared UI cache
+        run: python - <<'PY'
+from pathlib import Path
+p=Path('index.html')
+s=p.read_text()
+s=s.replace('shared.js?v=4','shared.js?v=5')
+p.write_text(s)
+PY
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
