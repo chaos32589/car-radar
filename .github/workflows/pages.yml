@@ -29,10 +29,10 @@ from pathlib import Path
 p=Path('index.html')
 s=p.read_text()
 needle='<script>const BASE='
-if '<script src="shared.js"></script>' not in s:
-    s=s.replace(needle,'<script src="shared.js"></script>'+needle,1)
-if '<script src="filters.js"></script>' not in s:
-    s=s.replace('</body>','<script src="filters.js"></script></body>',1)
+if 'shared.js?v=3' not in s:
+    s=s.replace(needle,'<script src="shared.js?v=3"></script>'+needle,1)
+if 'filters.js?v=3' not in s:
+    s=s.replace('</body>','<script src="filters.js?v=3"></script></body>',1)
 p.write_text(s)
 PY
       - name: Setup Pages
