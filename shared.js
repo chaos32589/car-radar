@@ -35,6 +35,20 @@
       object-position:center center !important;
       transform:none !important;
     }
+    .vehicleFilterTitle{
+      font-size:13px !important;
+    }
+    .vehicleFilterMeta{
+      font-size:10.5px !important;
+    }
+    @media(max-width:520px){
+      .vehicleFilterTitle{
+        font-size:12.5px !important;
+      }
+      .vehicleFilterMeta{
+        font-size:10px !important;
+      }
+    }
   `;
   document.head.appendChild(style);
 
