@@ -13,16 +13,27 @@
 
   const style=document.createElement('style');
   style.textContent=`
-    .matchImages{overflow:hidden;}
-    .matchImages img:first-child{
-      object-fit:contain !important;
-      object-position:center center !important;
+    .matchImages:not(.one){
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      gap:2px !important;
+      overflow:hidden;
     }
-    .matchImages:not(.one) img:nth-child(2){
+    .matchImages:not(.one) img{
+      width:100% !important;
+      height:auto !important;
+      aspect-ratio:16 / 9;
       object-fit:cover !important;
       object-position:center center !important;
-      transform:scale(1.12);
-      transform-origin:center center;
+      transform:none !important;
+      display:block;
+    }
+    .matchImages.one img{
+      width:100% !important;
+      height:auto !important;
+      aspect-ratio:16 / 9;
+      object-fit:cover !important;
+      object-position:center center !important;
+      transform:none !important;
     }
   `;
   document.head.appendChild(style);
