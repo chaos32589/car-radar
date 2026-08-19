@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Bust shared.js cache
+        run: sed -i "s/shared.js?v=[^\"]*/shared.js?v=${GITHUB_SHA}/" index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
