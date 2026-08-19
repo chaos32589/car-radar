@@ -11,6 +11,22 @@
     return originalFetch(input,init);
   };
 
+  const style=document.createElement('style');
+  style.textContent=`
+    .matchImages{overflow:hidden;}
+    .matchImages img:first-child{
+      object-fit:contain !important;
+      object-position:center center !important;
+    }
+    .matchImages:not(.one) img:nth-child(2){
+      object-fit:cover !important;
+      object-position:center center !important;
+      transform:scale(1.12);
+      transform-origin:center center;
+    }
+  `;
+  document.head.appendChild(style);
+
   window.addEventListener('DOMContentLoaded',()=>{
     const count=document.getElementById('countText');
     if(count&&!document.getElementById('sharedHint')){
