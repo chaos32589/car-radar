@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Bust shared.js cache
         run: sed -i "s/shared.js?v=[^\"]*/shared.js?v=${GITHUB_SHA}/" index.html
+      - name: Inject UI tweaks
+        run: sed -i 's#</body>#<script src="ui-tweaks.js?v='"${GITHUB_SHA}"'"></script></body>#' index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
