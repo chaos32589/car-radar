@@ -8,15 +8,16 @@
     .metaLabel{line-height:11px !important;height:11px !important}
     .metaValue{height:22px !important;line-height:22px !important}
     .metaItem.price .metaValue{height:22px !important;line-height:22px !important}
-    .preparingBadge{display:inline-flex;align-items:center;margin-left:7px;padding:2px 6px;border-radius:999px;background:rgba(255,138,50,.12);border:1px solid rgba(255,138,50,.42);color:#ff9b52;font-size:9px;font-weight:750;line-height:1.25;vertical-align:2px;white-space:nowrap}
-    body.light-theme .preparingBadge{background:#fff3e8;border-color:#ffc28f;color:#d96a18}
+    .matchImages{position:relative !important}
+    .preparingBadge{position:absolute;z-index:5;top:10px;right:10px;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:rgba(255,138,50,.92);border:1px solid rgba(255,255,255,.72);color:#fff;font-size:10px;font-weight:800;line-height:1.2;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.16);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+    body.light-theme .preparingBadge{background:rgba(245,111,20,.92);border-color:rgba(255,255,255,.82);color:#fff}
     @media(max-width:520px){
       .matchBody{padding:9px 11px 10px !important}
       .metaGrid{margin-top:6px !important;gap:5px !important}
       .metaItem{grid-template-rows:10px 21px !important;row-gap:2px !important}
       .metaLabel{line-height:10px !important;height:10px !important}
       .metaValue,.metaItem.price .metaValue{height:21px !important;line-height:21px !important}
-      .preparingBadge{margin-left:6px;padding:2px 5px;font-size:8.5px}
+      .preparingBadge{top:8px;right:8px;padding:4px 7px;font-size:9px}
     }
   `;
   document.head.appendChild(style);
@@ -35,11 +36,13 @@
     document.querySelectorAll('.matchCard').forEach(card=>{
       const href=card.getAttribute('href')||'';
       const id=href.match(/\/car\/(\d+)/)?.[1];
-      const title=card.querySelector('.matchTitle');
-      if(!title||!id) return;
-      let badge=title.querySelector('.preparingBadge');
+      if(!id) return;
+      card.querySelector('.matchTitle .preparingBadge')?.remove();
+      const images=card.querySelector('.matchImages');
+      if(!images) return;
+      let badge=images.querySelector('.preparingBadge');
       if(preparingIds.has(id)){
-        if(!badge){badge=document.createElement('span');badge.className='preparingBadge';badge.textContent='整备中';title.appendChild(badge)}
+        if(!badge){badge=document.createElement('span');badge.className='preparingBadge';badge.textContent='整备中';images.appendChild(badge)}
       }else badge?.remove();
     });
   }
