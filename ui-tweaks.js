@@ -1,9 +1,9 @@
 (()=>{
   const style=document.createElement('style');
   style.textContent=`
-    .matchBody{padding:10px 12px 11px !important}
+    .matchBody{padding:30px 12px 11px !important}
     .matchTitle{line-height:1.18 !important;margin:0 !important}
-    .metaGrid{margin-top:7px !important;gap:6px !important}
+    .metaGrid{margin-top:30px !important;gap:6px !important}
     .metaItem{grid-template-rows:11px 22px !important;row-gap:2px !important}
     .metaLabel{line-height:11px !important;height:11px !important}
     .metaValue{height:22px !important;line-height:22px !important}
@@ -12,8 +12,8 @@
     .preparingBadge{position:absolute;z-index:5;top:10px;right:10px;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:rgba(255,138,50,.92);border:1px solid rgba(255,255,255,.72);color:#fff;font-size:10px;font-weight:800;line-height:1.2;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.16);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
     body.light-theme .preparingBadge{background:rgba(245,111,20,.92);border-color:rgba(255,255,255,.82);color:#fff}
     @media(max-width:520px){
-      .matchBody{padding:9px 11px 10px !important}
-      .metaGrid{margin-top:6px !important;gap:5px !important}
+      .matchBody{padding:30px 11px 10px !important}
+      .metaGrid{margin-top:30px !important;gap:5px !important}
       .metaItem{grid-template-rows:10px 21px !important;row-gap:2px !important}
       .metaLabel{line-height:10px !important;height:10px !important}
       .metaValue,.metaItem.price .metaValue{height:21px !important;line-height:21px !important}
