@@ -1,6 +1,8 @@
 (()=>{
   const style=document.createElement('style');
   style.textContent=`
+    .card{border-radius:16px !important}
+    .matchCard{border-radius:14px !important}
     .matchBody{padding:12px 12px 11px !important}
     .matchTitle{line-height:1.18 !important;margin:0 !important}
     .metaGrid{margin-top:12px !important;gap:6px !important}
@@ -12,6 +14,8 @@
     .preparingBadge{position:absolute;z-index:5;top:10px;right:10px;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:rgba(255,138,50,.92);border:1px solid rgba(255,255,255,.72);color:#fff;font-size:10px;font-weight:800;line-height:1.2;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.16);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
     body.light-theme .preparingBadge{background:rgba(245,111,20,.92);border-color:rgba(255,255,255,.82);color:#fff}
     @media(max-width:520px){
+      .card{border-radius:15px !important}
+      .matchCard{border-radius:13px !important}
       .matchBody{padding:12px 11px 10px !important}
       .metaGrid{margin-top:12px !important;gap:5px !important}
       .metaItem{grid-template-rows:10px 21px !important;row-gap:2px !important}
